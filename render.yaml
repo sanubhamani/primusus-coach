@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: primusus-coach
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: OPENAI_API_KEY
+        value: YOUR_OPENAI_API_KEY
+      - key: PINECONE_API_KEY
+        value: YOUR_PINECONE_API_KEY
+      - key: PINECONE_ENV
+        value: us-east1-gcp
