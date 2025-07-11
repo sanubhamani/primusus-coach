@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.post("/whatsapp-hook")
 async def whatsapp_hook(request: Request):
-    data = await request.json()
+    data = await request.form()
     body = data.get("Body", "")
     sender = data.get("From", "")
     print(f"Received message: {body} from {sender}")
