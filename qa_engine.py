@@ -7,15 +7,12 @@ from langchain_community.embeddings import OpenAIEmbeddings
 # Load API keys
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Initialize Pinecone v3 client
-pc = PineconeClient(
-    api_key=os.getenv("PINECONE_API_KEY"),
-    environment=os.getenv("PINECONE_ENV")
-)
+# Initialize Pinecone client and connect to index
+pc = PineconeClient(api_key=os.getenv("PINECONE_API_KEY"))
+index = pc.Index("primusus-coach")
 
-index_name = "primusus-coach"
 embedding = OpenAIEmbeddings()
-vectorstore = Pinecone.from_existing_index(index_name=index_name, embedding=embedding)
+vectorstore = Pinecone(index, embedding, "text")  # "text" is the metadata key
 
 def get_response(user_input: str) -> str:
     # Search top 3 relevant chunks
