@@ -1,17 +1,18 @@
 import os
 import openai
-import pinecone
+from pinecone import Pinecone as PineconeClient
 from langchain_community.vectorstores import Pinecone
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.embeddings import OpenAIEmbeddings
 
-# Load API keys from environment
+# Load API keys
 openai.api_key = os.getenv("OPENAI_API_KEY")
-pinecone.init(
+
+# Initialize Pinecone v3 client
+pc = PineconeClient(
     api_key=os.getenv("PINECONE_API_KEY"),
     environment=os.getenv("PINECONE_ENV")
 )
 
-# Connect to existing Pinecone index
 index_name = "primusus-coach"
 embedding = OpenAIEmbeddings()
 vectorstore = Pinecone.from_existing_index(index_name=index_name, embedding=embedding)
