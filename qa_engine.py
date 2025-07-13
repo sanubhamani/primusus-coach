@@ -42,3 +42,4 @@ Write a sharp, direct, human-sounding coaching reply. Keep it under 5 sentences.
     )
 
     return chat.choices[0].message["content"].strip()
+# Final rebuild trigger — remove after successful deploy
