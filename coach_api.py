@@ -1,18 +1,14 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.responses import Response
 from twilio.twiml.messaging_response import MessagingResponse
 
 app = FastAPI()
 
 @app.post("/whatsapp-hook")
-async def whatsapp_hook(request: Request):
-    data = await request.form()
-    body = data.get("Body", "")
-    sender = data.get("From", "")
-    print(f"Received message: {body} from {sender}")
+async def whatsapp_hook(Body: str = Form(...), From: str = Form(...)):
+    print(f"Received message: {Body} from {From}")
 
-    # Build Twilio XML reply
-    response = MessagingResponse()
-    response.message(f"Got it: '{body}' — we’ll coach you soon.")
+    twilio_response = MessagingResponse()
+    twilio_response.message(f"Got it: '{Body}' — we’ll coach you soon.")
 
-    return Response(content=str(response), media_type="application/xml")
+    return Response(content=str(twilio_response), media_type="application/xml")
