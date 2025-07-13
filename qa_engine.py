@@ -11,10 +11,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Define OpenAI embedding model with explicit client to avoid proxies error
 embedding = OpenAIEmbeddings(
     model="text-embedding-3-small",
-    client=OpenAI(
-        api_key=os.getenv("OPENAI_API_KEY"),
-        base_url="https://api.openai.com/v1"
-    )
+    openai_api_key=os.getenv("OPENAI_API_KEY")
 )
 
 # Connect to Pinecone index
