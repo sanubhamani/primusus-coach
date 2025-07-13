@@ -1,6 +1,6 @@
 import os
 import openai
-from pinecone import Pinecone as PineconeClient
+from pinecone import Pinecone as PineconeClient, Index
 from langchain_community.vectorstores import Pinecone
 from langchain_community.embeddings import OpenAIEmbeddings
 
