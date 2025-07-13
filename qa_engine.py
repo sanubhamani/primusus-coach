@@ -1,7 +1,7 @@
 import os
 import openai
 import pinecone
-from langchain.vectorstores import Pinecone
+from langchain_community.vectorstores import Pinecone
 from langchain.embeddings import OpenAIEmbeddings
 
 # Load environment variables
