@@ -2,7 +2,7 @@ fastapi==0.100.0
 uvicorn==0.23.2
 python-multipart==0.0.6
 openai==1.6.1
-pinecone-client==3.0.0
-langchain-community==0.0.22
-twilio==8.10.0
+pinecone>=3.2.0,<4.0.0
 langchain==0.1.14
+langchain-community==0.0.35  # <-- bump this to 0.0.35
+twilio==8.10.0
