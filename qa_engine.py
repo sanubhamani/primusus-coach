@@ -4,7 +4,7 @@ import pinecone
 from langchain_community.vectorstores import Pinecone
 from langchain.embeddings import OpenAIEmbeddings
 
-# Load API keys
+# Load API keys from environment
 openai.api_key = os.getenv("OPENAI_API_KEY")
 pinecone.init(
     api_key=os.getenv("PINECONE_API_KEY"),
